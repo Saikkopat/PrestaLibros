@@ -1,0 +1,131 @@
+body {
+    background-color: #FAEDF0;
+    font-family: Verdana, sans-serif;
+    width: 100%;
+}
+h1 {
+    font-size: 40px;
+    padding: 50px 10px 20px;
+    position: static;
+}
+
+h2 {
+    font-size: 30px;
+    
+}
+
+
+footer{
+    background-color: #EC255A;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    width: 100%;
+}
+div {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    font-size:20px;
+}
+
+#navbar{
+    position: static;
+}
+
+#presentacion {
+    height: 85%;
+    top: 10%;
+    bottom:10%;
+    position: fixed-sticky;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #292C6D;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.active {
+    background-color: #EC255A;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 18px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #EC255A;
+}
+
+#titulo {
+    font-family: sans-serif;
+}
+
+
+input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+}
+
+input{
+    margin-bottom: 20px;
+
+}
+
+form{
+    width: 100%;
+    margin: 50px 70px 50px;
+    display: inline-block;
+}
+
+label{
+    width: 100%;
+    padding: 12px 20px;
+}
+input[type=submit]{
+    width: 100%;
+    color: #FAEDF0;
+    background-color: #292C6D;
+    padding: 20px;
+    font-size: 20px;
+}
+
+form input[type=submit]:hover{
+    background-color: #EC255A;
+}
+
+
+#result{
+    position: static-sticky;
+    padding-top: 225px;
+    
+}
+
+
+table{
+  width: 100%;  
+  position: sticky;
+  padding:70px;
+  box-sizing: border-box;
+}
+
+thead{
+    color: #FAEDF0;
+    background-color: #EC255A;
+}
