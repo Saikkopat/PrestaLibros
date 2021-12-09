@@ -1,5 +1,4 @@
 <%@page import="java.sql.*"%>
-<%@page import="com.mysql.jdbc.Driver"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,12 +16,12 @@
     <%try {
             Connection CON_CON = null;
             Class.forName("com.mysql.jdbc.Driver");
-            CON_CON = DriverManager.getConnection("jdbc:mysql://localhost:3306/libreria?user=root&password=");
+            CON_CON = DriverManager.getConnection("jdbc:mysql://localhost/libreria?user=root&password=");
 
             Statement ST_CON = null;
             ResultSet RS_CON = null;
             ST_CON = CON_CON.createStatement();
-            RS_CON = ST_CON.executeQuery("SELECT * FROM prestamo LIMIT 100;");
+            RS_CON = ST_CON.executeQuery("SELECT * FROM prestamos;");
     %>
     <h1>Registro de Prestamos</h1>
     <div id="presentacion">
@@ -40,12 +39,12 @@
         <tbody>
             <% while (RS_CON.next()) {%>
             <tr>
-                <td><%=RS_CON.getInt("numPrestamo")%></td>
-                <td><%=RS_CON.getString("fechaSolicitud")%></td>
-                <td><%=RS_CON.getString("fechaEntrega")%></td>
-                <td><%=RS_CON.getString("extendible")%></td>
-                <td><%=RS_CON.getInt("idLibro")%></td>
-                <td><%=RS_CON.getInt("numAlumno")%></td>
+                <td><%=RS_CON.getInt("id_prestamo")%></td>
+                <td><%=RS_CON.getString("fecha_solicitud")%></td>
+                <td><%=RS_CON.getString("fecha_entrega")%></td>
+                <td><%=RS_CON.getString("extentible")%></td>
+                <td><%=RS_CON.getInt("id_libro")%></td>
+                <td><%=RS_CON.getInt("id_alumno")%></td>
             </tr>
             <% }
                 } catch (Exception e) {

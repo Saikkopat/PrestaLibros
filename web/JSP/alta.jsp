@@ -13,12 +13,12 @@
             try {
                 Connection CONECTDB;
                 Class.forName("com.mysql.jdbc.Driver");
-                CONECTDB = DriverManager.getConnection("jdbc:mysql://localhost:3306/libreria?user=root&password=");
+                CONECTDB = DriverManager.getConnection("jdbc:mysql://localhost/libreria?user=root&password=");
 
                 Statement ST;
                 ResultSet RS;
                 ST = CONECTDB.createStatement();
-                RS = ST.executeQuery("SELECT numPrestamo FROM prestamo ORDER BY numPrestamo DESC LIMIT 1;");
+                RS = ST.executeQuery("SELECT id_prestamo FROM prestamos ORDER BY id_prestamo DESC LIMIT 1;");
                 RS.next();
         %>
     </head>
@@ -31,7 +31,7 @@
         <div id="presentacion">
             <form action="alta.jsp" method="POST">
                 <label for="fnumPrestamo">Numero de Prestamo:</label>
-                <input type="number" id="fnumPrestamo" name="numPrestamo" value=<%= 1 + RS.getInt("numPrestamo")%>><br>
+                <input type="number" id="fnumPrestamo" name="numPrestamo" value=<%= 1 + RS.getInt("id_prestamo")%>><br>
                 <%
                 } catch (Exception e) { %>
                 alert(<% out.print(e);%>);<%
@@ -39,7 +39,7 @@
                 %>
 
                 <label for="fnumAlumno">de Alumno</label>
-                <input type="number" id="fnumANumero lumno" name="numAlumno" placeholder="Obligatorio"><br>
+                <input type="number" id="fnumANumero alumno" name="numAlumno" placeholder="Obligatorio"><br>
 
                 <label for="fidLib">Codigo del Libro</label>
                 <input type="number" id="fidLibro" name="idLibro" placeholder="Obligatorio"><br>
@@ -51,9 +51,12 @@
             </form>
         </div>
                 
-                <div>
+                    <img id="giflibro" src="book.gif" alt="Gif de un libro" style="width: 45%;
+    height: 70%;
+    right: 3%;
+    top: 15%;
+    position: absolute;">
                     
-                </div>        
         <%
             if (request.getParameter("solicitud") != null) {
                 String pnumPrestamo = request.getParameter("numPrestamo");
@@ -64,10 +67,10 @@
                     Connection CON_SOL = null;
                     Statement ST_SOL = null;
                     Class.forName("com.mysql.jdbc.Driver");
-                    CON_SOL = DriverManager.getConnection("jdbc:mysql://localhost:3306/libreria?user=root&password=");
+                    CON_SOL = DriverManager.getConnection("jdbc:mysql://localhost/libreria?user=root&password=");
                     ST_SOL = CON_SOL.createStatement();
                     String SQL = "";
-                    SQL = "INSERT INTO prestamo VALUES (" + pnumPrestamo + ", now(), now(), 1," + pidLibro + ", " + pnumAlumno + ");";
+                    SQL = "INSERT INTO prestamos VALUES (" + pnumPrestamo + ", now(), now(), 1," + pidLibro + ", " + pnumAlumno + ");";
                     ST_SOL.execute(SQL);
                     request.getRequestDispatcher("confirmacion.jsp").forward(request, response);
                 } catch (Exception e2) {

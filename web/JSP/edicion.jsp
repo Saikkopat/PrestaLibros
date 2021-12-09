@@ -17,7 +17,7 @@
         <% try {
                 Connection CON_EDIC = null;
                 Class.forName("com.mysql.jdbc.Driver");
-                CON_EDIC = DriverManager.getConnection("jdbc:mysql://localhost:3306/libreria?user=root&password=");
+                CON_EDIC = DriverManager.getConnection("jdbc:mysql://localhost/libreria?user=root&password=");
                 Statement ST_EDIC;
                 ResultSet RS_EDIC;
                 ST_EDIC = CON_EDIC.createStatement();%>
@@ -30,18 +30,18 @@
         </div>
         <% if (request.getParameter("buscar") != null) {
                 String bID = request.getParameter("fID");
-                String SQL_EDIC = "SELECT * FROM prestamo WHERE numPrestamo = '" + bID + "'";
+                String SQL_EDIC = "SELECT * FROM prestamos WHERE id_prestamo = '" + bID + "'";
                 RS_EDIC = ST_EDIC.executeQuery(SQL_EDIC);
                 RS_EDIC.next();
                 if (RS_EDIC != null) {%>
         <div id="result">
             <form action="edicion.jsp" method="POST">
                 <label for="fnumPrestamo">Numero de Prestamo:</label>
-                <input type="string" name="fnumPrestamo" value=<%=RS_EDIC.getString("numPrestamo")%> disabled><br />
+                <input type="string" name="fnumPrestamo" value=<%=RS_EDIC.getString("id_prestamo")%> disabled><br />
                 <label for="fnumAlumno">Numero de Alumno</label>
-                <input type="string" name="fnumAlumno" value=<%= RS_EDIC.getString("numAlumno")%> ><br />
+                <input type="string" name="fnumAlumno" value=<%= RS_EDIC.getString("id_alumno")%> ><br />
                 <label for="fidLibro">Codigo del Libro</label>
-                <input type="string" name="fidLibro" value=<%= RS_EDIC.getString("idLibro")%>><br />
+                <input type="string" name="fidLibro" value=<%= RS_EDIC.getString("id_libro")%>><br />
                 <%--
                 <label for="ffechaEntrega">Fecha de Entrega:</label>
                 ---%>
@@ -55,12 +55,13 @@
                     String uidLibro = request.getParameter("fidLibro");
                     if(unumPrestamo != null && unumAlumno != null && uidLibro != null){
                     PreparedStatement PS;
-                    String SQL_MOD = "UPDATE prestamo SET (idLibro = '"+uidLibro+"', numAlumno = '"+unumAlumno+"') WHERE numPrestamo = '"+unumPrestamo+";";
+                    String SQL_MOD = "UPDATE prestamos SET (id_libro = '"+uidLibro+"', id_alumno = '"+unumAlumno+"') WHERE id_prestamo = '"+unumPrestamo+";";
                     PS = CON_EDIC.prepareStatement(SQL_MOD);
                     PS.executeUpdate();
                     ST_EDIC.close();
                     PS.close();
-                    CON_EDIC.close();}
+                    CON_EDIC.close();
+            }
                     response.sendRedirect("../JSP/consulta.jsp");
             }               
             }

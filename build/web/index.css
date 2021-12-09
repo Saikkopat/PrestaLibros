@@ -2,6 +2,9 @@ body {
     background-color: #FAEDF0;
     font-family: Verdana, sans-serif;
     width: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 h1 {
     font-size: 40px;
@@ -11,9 +14,15 @@ h1 {
 
 h2 {
     font-size: 30px;
-    
+
 }
 
+#giflibro{
+    
+}
+#gif{
+    text-align: right;
+}
 
 footer{
     background-color: #EC255A;
@@ -114,15 +123,15 @@ form input[type=submit]:hover{
 #result{
     position: static-sticky;
     padding-top: 225px;
-    
+
 }
 
 
 table{
-  width: 100%;  
-  position: sticky;
-  padding:70px;
-  box-sizing: border-box;
+    width: 100%;
+    position: sticky;
+    padding:70px;
+    box-sizing: border-box;
 }
 
 thead{
